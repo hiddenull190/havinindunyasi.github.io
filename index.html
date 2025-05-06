@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Havin'in Mini Oyunları</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500;600;700&family=Quicksand:wght@400;500;700&family=Pacifico&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>❤️</text></svg>">
+</head>
+<body>
+    <!-- Yükleme Ekranı -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <img src="images/Havin.png" alt="Havin'in Dünyası" class="logo">
+            </div>
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Yükleniyor...</div>
+        </div>
+    </div>
+    
+    <div id="app" style="display:none;">
+        <!-- Ana içerik buraya yüklenecek -->
+        <div id="welcome-page" class="page active">
+            <div class="container">
+                <h1 class="title">Havin'in Mini Oyunları</h1>
+                <p class="subtitle">Havin'in Dünyasına Hoşgeldiniz!</p>
+                
+                <!-- Sayfa kaydırma butonları -->
+                <div id="scroll-down-btn" class="scroll-btn scroll-down-btn">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div id="scroll-up-btn" class="scroll-btn scroll-up-btn hidden">
+                    <i class="fas fa-chevron-up"></i>
+                </div>
+                
+                <div class="game-cards">
+                    <div class="game-card animate__animated animate__bounceIn" data-game="xox">
+                        <div class="game-card-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <div class="game-card-content">
+                            <h3>Havin'in XOX Macerası</h3>
+                            <p>Klasik XOX oyunu! İlk üçlüyü tamamlayan kazanır.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="game-card animate__animated animate__bounceIn animate__delay-1s" data-game="memory">
+                        <div class="game-card-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="game-card-content">
+                            <h3>Havin'in Hafıza Kartları</h3>
+                            <p>Eşleşen kartları bul ve görsel hafızanı test et!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="game-card animate__animated animate__bounceIn animate__delay-2s" data-game="reaction">
+                        <div class="game-card-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="game-card-content">
+                            <h3>Havin'in Refleks Testi</h3>
+                            <p>Ne kadar hızlısın? Reflekslerini test et!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="game-card animate__animated animate__bounceIn animate__delay-3s" data-game="game-2048">
+                        <div class="game-card-icon">
+                            <i class="fas fa-th"></i>
+                        </div>
+                        <div class="game-card-content">
+                            <h3>Havin'in 2048 Oyunu</h3>
+                            <p>Kareleri birleştir ve 2048'e ulaş! Kolay versiyon!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="game-card animate__animated animate__bounceIn animate__delay-4s" data-game="tetris">
+                        <div class="game-card-icon">
+                            <i class="fas fa-cubes"></i>
+                        </div>
+                        <div class="game-card-content">
+                            <h3>Havin'in Tetris Oyunu</h3>
+                            <p>Klasik blok oyunu! Taşları yerleştir ve sıraları temizle!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="game-card animate__animated animate__bounceIn animate__delay-5s" data-game="snake">
+                        <div class="game-card-icon">
+                            <i class="fas fa-tape"></i>
+                        </div>
+                        <div class="game-card-content">
+                            <h3>Havin'in Yılan Oyunu</h3>
+                            <p>Yılanı yönlendir ve yemi topla! Dikkat, sınırlara değme!</p>
+                        </div>
+                    </div>
+                    
+                    <!-- YENİ OYUNLAR -->
+                    <div class="game-card animate__animated animate__bounceIn animate__delay-6s" data-game="hangman" style="opacity: 0; visibility: hidden;">
+                        <div class="game-card-icon" style="background-color: #FF9933;"><!-- Turuncu renk -->
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <div class="game-card-content">
+                            <h3>Havin'in Kelime Tahmin Oyunu</h3>
+                            <p>Harfleri tahmin et ve gizli kelimeyi bul! Dikkat, sınırlı hakkın var!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="game-card animate__animated animate__bounceIn animate__delay-7s" data-game="bubble" style="opacity: 0; visibility: hidden;">
+                        <div class="game-card-icon" style="background-color: #003366;"><!-- Lacivert renk -->
+                            <i class="fas fa-circle"></i>
+                        </div>
+                        <div class="game-card-content">
+                            <h3>Havin'in Baloncuk Patlatma Oyunu</h3>
+                            <p>H harfli balonları patlat ve en yüksek skoru yakala! Hızlı ol!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="game-card animate__animated animate__bounceIn animate__delay-8s" data-game="color-match" style="opacity: 0; visibility: hidden;">
+                        <div class="game-card-icon" style="background-color: #66CC66;"><!-- Orta Bahar Yeşili -->
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <div class="game-card-content">
+                            <h3>Havin'in Renk Eşleştirme Oyunu</h3>
+                            <p>Doğru renkleri eşleştir ve konsantrasyonunu test et! Zaman daralıyor!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="game-card animate__animated animate__bounceIn animate__delay-9s" data-game="click-race" style="opacity: 0; visibility: hidden;">
+                        <div class="game-card-icon" style="background-color: #808080;"><!-- Gri -->
+                            <i class="fas fa-mouse-pointer"></i>
+                        </div>
+                        <div class="game-card-content">
+                            <h3 style="color: #808080;">Havin'in Tıklama Yarışı</h3>
+                            <p>10 saniyede ne kadar hızlı tıklayabilirsin? Rekoru kırmaya çalış!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="game-card animate__animated animate__bounceIn animate__delay-10s" data-game="love-letters" style="opacity: 0; visibility: hidden;">
+                        <div class="game-card-icon" style="background-color: #e91e63;"><!-- Pembe -->
+                            <i class="fas fa-envelope-open-text"></i>
+                        </div>
+                        <div class="game-card-content">
+                            <h3>Havin'e Mektuplar</h3>
+                            <p>Havin'e yazılmış özel aşk mektupları.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="game-card animate__animated animate__bounceIn animate__delay-11s" data-game="find-diff" style="opacity: 0; visibility: hidden;">
+                        <div class="game-card-icon" style="background-color: #D2B48C;"><!-- Açık Kahverengi -->
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="game-card-content">
+                            <h3 style="color: #D2B48C;">Havin'in Farkları Bul Oyunu</h3>
+                            <p>Birbirine benzeyen karakterlerin ve emojilerin arasındaki farklı olanı bul!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="game-card animate__animated animate__bounceIn animate__delay-12s" data-game="love-meter" style="opacity: 0; visibility: hidden;">
+                        <div class="game-card-icon" style="background-color: #800020;"><!-- Bordo renk -->
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="game-card-content">
+                            <h3 style="color: #800020;">Havin'in Aşk Ölçeri</h3>
+                            <p>İki ismin aşk uyumunu ölç ve aşk yüzdenizi öğren!</p>
+                        </div>
+                    </div>
+
+                    <div class="game-card animate__animated animate__bounceIn animate__delay-13s" data-game="bulb-breaker" style="opacity: 0; visibility: hidden;">
+                        <div class="game-card-icon" style="background-color: #F8FF33;"><!-- Fosforlu Sarı renk -->
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="game-card-content">
+                            <h3 style="color: #F8FF33;">Havin'in Ampul Kırma Oyunu</h3>
+                            <p>Düşen ampulleri kırmaya çalış! Yere düşen ampuller oyunu bitirir!</p>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="footer">
+                    <p class="animate__animated animate__heartBeat animate__infinite">Havin <i class="fas fa-heart"></i> Toprak</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- XOX Oyunu Sayfası -->
+        <div id="xox-page" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <button class="back-btn">← Geri</button>
+                    <h2 class="page-title">Havin'in XOX Macerası</h2>
+                </div>
+                
+                <div class="game-stats-card">
+                    <div class="stats-item">
+                        <p class="stats-label">Skor</p>
+                        <div class="score-display">
+                            <div><span class="x-color">X</span> <span id="xox-score-x">0</span></div>
+                            <div><span class="o-color">O</span> <span id="xox-score-o">0</span></div>
+                        </div>
+                    </div>
+                    <div class="stats-item">
+                        <p class="stats-label">Sıra</p>
+                        <div id="xox-turn" class="x-color">X</div>
+                    </div>
+                </div>
+                
+                <div id="xox-board" class="xox-board">
+                    <!-- XOX hücreleri JavaScript ile oluşturulacak -->
+                </div>
+                
+                <button id="xox-reset" class="action-btn">Yeniden Başla</button>
+            </div>
+        </div>
+        
+        <!-- Hafıza Oyunu Sayfası -->
+        <div id="memory-page" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <button class="back-btn">← Geri</button>
+                    <h2 class="page-title">Havin'in Hafıza Kartları</h2>
+                </div>
+                
+                <div class="game-stats-card">
+                    <div class="stats-item">
+                        <p class="stats-label">Eşleşmeler</p>
+                        <div id="memory-matches">0/0</div>
+                    </div>
+                    <div class="stats-item">
+                        <p class="stats-label">Hamleler</p>
+                        <div id="memory-moves">0</div>
+                    </div>
+                </div>
+                
+                <div id="memory-difficulty" class="difficulty-selector">
+                    <h3>Zorluk Seviyesi</h3>
+                    <div class="difficulty-options">
+                        <button data-difficulty="easy" class="difficulty-btn selected">Kolay</button>
+                        <button data-difficulty="medium" class="difficulty-btn">Orta</button>
+                        <button data-difficulty="hard" class="difficulty-btn">Zor</button>
+                    </div>
+                </div>
+                
+                <div id="memory-board" class="memory-board">
+                    <!-- Hafıza kartları JavaScript ile oluşturulacak -->
+                </div>
+                
+                <button id="memory-start" class="action-btn">Oyunu Başlat</button>
+            </div>
+        </div>
+        
+        <!-- Refleks Testi Sayfası -->
+        <div id="reaction-page" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <button class="back-btn">← Geri</button>
+                    <h2 class="page-title">Havin'in Refleks Testi</h2>
+                </div>
+                
+                <div class="game-stats-card">
+                    <div class="stats-item">
+                        <p class="stats-label">En İyi Süre</p>
+                        <div id="reaction-best-time">-</div>
+                    </div>
+                    <div class="stats-item">
+                        <p class="stats-label">Son Süre</p>
+                        <div id="reaction-last-time">-</div>
+                    </div>
+                </div>
+                
+                <div id="reaction-container" class="reaction-container">
+                    <div id="reaction-content">
+                        <!-- Refleks testi içeriği JavaScript ile değiştirilecek -->
+                        <div id="reaction-idle">
+                            <p class="reaction-text">Hazır...</p>
+                            <p>Renkli kalp göründüğünde hemen tıkla!</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="reaction-start" class="action-btn">Hazırım, Başla!</button>
+                <button id="reaction-try-again" class="action-btn" style="display: none; margin-top: 10px;">Tekrar Dene</button>
+            </div>
+        </div>
+        
+        <!-- 2048 Oyun Sayfası -->
+        <div id="game-2048-page" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <button class="back-btn">← Geri</button>
+                    <h2 class="page-title">Havin'in 2048 Oyunu</h2>
+                </div>
+                
+                <div class="game-stats-card">
+                    <div class="stats-item">
+                        <p class="stats-label">Skor</p>
+                        <div id="game-2048-score">0</div>
+                    </div>
+                    <div class="stats-item">
+                        <p class="stats-label">En İyi Skor</p>
+                        <div id="game-2048-best-score">0</div>
+                    </div>
+                </div>
+                
+                <div id="game-2048-status" class="game-status">
+                    Kareleri birleştir ve 2048'e ulaş!
+                </div>
+                
+                <div id="game-2048-board" class="game-2048-board">
+                    <!-- 2048 kareleri JavaScript ile oluşturulacak -->
+                </div>
+                
+                <div class="game-2048-controls">
+                    <button id="game-2048-up" class="center-btn">↑</button>
+                    <button id="game-2048-left" class="left-btn">←</button>
+                    <button id="game-2048-right" class="right-btn">→</button>
+                    <button id="game-2048-down" class="down-btn">↓</button>
+                </div>
+                
+                <button id="game-2048-start" class="action-btn">Yeniden Başla</button>
+            </div>
+        </div>
+        
+        <!-- Tetris Oyun Sayfası -->
+        <div id="tetris-page" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <button class="back-btn">← Geri</button>
+                    <h2 class="page-title">Havin'in Tetris Oyunu</h2>
+                </div>
+                
+                <div class="game-stats-card">
+                    <div class="stats-item">
+                        <p class="stats-label">Skor</p>
+                        <div id="tetris-score">0</div>
+                    </div>
+                    <div class="stats-item">
+                        <p class="stats-label">Seviye</p>
+                        <div id="tetris-level">1</div>
+                    </div>
+                    <div class="stats-item">
+                        <p class="stats-label">Satır</p>
+                        <div id="tetris-lines">0</div>
+                    </div>
+                </div>
+                
+                <div class="tetris-game-container">
+                    <div id="tetris-board" class="tetris-board">
+                        <!-- Tetris tahtası JavaScript ile oluşturulacak -->
+                    </div>
+                    <div class="tetris-sidebar">
+                        <div class="tetris-next-piece-container">
+                            <p class="tetris-next-label">Sonraki Parça</p>
+                            <div id="tetris-next-piece" class="tetris-next-piece"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tetris-controls">
+                    <button id="tetris-left-btn">←</button>
+                    <button id="tetris-rotate-btn">↻</button>
+                    <button id="tetris-right-btn">→</button>
+                    <button id="tetris-down-btn">↓</button>
+                </div>
+                
+                <button id="tetris-start" class="action-btn">Oyunu Başlat</button>
+                <button id="tetris-pause" class="action-btn" style="display: none; margin-top: 10px;">Duraklat</button>
+            </div>
+        </div>
+        
+        <!-- Yılan Oyunu Sayfası -->
+        <div id="snake-page" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <button class="back-btn">← Geri</button>
+                    <h2 class="page-title">Havin'in Yılan Oyunu</h2>
+                </div>
+                
+                <div class="game-stats-card">
+                    <div class="stats-item">
+                        <p class="stats-label">Skor</p>
+                        <div id="snake-score">0</div>
+                    </div>
+                    <div class="stats-item">
+                        <p class="stats-label">En İyi Skor</p>
+                        <div id="snake-best-score">0</div>
+                    </div>
+                </div>
+                
+                <div id="snake-board" class="snake-board">
+                    <!-- Yılan tahtası JavaScript ile oluşturulacak -->
+                </div>
+                
+                <div class="snake-controls">
+                    <button id="snake-up" class="center-btn">↑</button>
+                    <button id="snake-left" class="left-btn">←</button>
+                    <button id="snake-right" class="right-btn">→</button>
+                    <button id="snake-down" class="down-btn">↓</button>
+                </div>
+                
+                <button id="snake-start" class="action-btn">Oyunu Başlat</button>
+                <button id="snake-pause" class="action-btn" style="display: none; margin-top: 10px;">Duraklat</button>
+            </div>
+        </div>
+        
+        <!-- Ampul Kırma Oyunu Sayfası -->
+        <div id="bulb-breaker-page" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <button class="back-btn">← Geri</button>
+                    <h2 class="page-title">Havin'in Ampul Kırma Oyunu</h2>
+                </div>
+                
+                <div class="game-stats-card">
+                    <div class="stats-item">
+                        <p class="stats-label">Skor</p>
+                        <div id="bulb-breaker-score">0</div>
+                    </div>
+                    <div class="stats-item">
+                        <p class="stats-label">En İyi Skor</p>
+                        <div id="bulb-breaker-best-score">0</div>
+                    </div>
+                    <div class="stats-item">
+                        <p class="stats-label">Düzey</p>
+                        <div id="bulb-breaker-level">1</div>
+                    </div>
+                </div>
+                
+                <div id="bulb-breaker-info" class="game-info-container">
+                    <!-- Oyun bilgileri buraya gelecek -->
+                </div>
+                
+                <div id="bulb-breaker-container" class="bulb-breaker-container">
+                    <!-- Oyun alanı JavaScript ile oluşturulacak -->
+                </div>
+                
+                <button id="bulb-breaker-start" class="action-btn">Oyunu Başlat</button>
+            </div>
+        </div>
+        
+        <!-- Aşk Ölçer Sayfası -->
+        <div id="love-meter-page" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <button class="back-btn">← Geri</button>
+                    <h2 class="page-title">Havin'in Aşk Ölçeri</h2>
+                </div>
+                
+                <div class="love-meter-container">
+                    <div class="love-meter-inputs">
+                        <div class="love-input-group">
+                            <label for="name1">İlk İsim:</label>
+                            <input type="text" id="name1" placeholder="Bir isim girin..." class="love-name-input">
+                        </div>
+                        
+                        <div class="love-heart-container">
+                            <div id="love-heart">
+                                <span id="love-percentage">%?</span>
+                            </div>
+                        </div>
+                        
+                        <div class="love-input-group">
+                            <label for="name2">İkinci İsim:</label>
+                            <input type="text" id="name2" placeholder="Bir isim girin..." class="love-name-input">
+                        </div>
+                    </div>
+                    
+                    <button id="calculate-love" class="action-btn love-calculate-btn">Aşk Yüzdesini Ölç</button>
+                    
+                    <div class="love-result-message" id="love-result-message"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Aşk Mektupları Sayfası -->
+        <div id="love-letters-page" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <button class="back-btn">← Geri</button>
+                    <h2 class="page-title">Havin'e Mektuplar</h2>
+                </div>
+                
+                <div class="love-letters-container">
+                    <div class="big-letter-icon">
+                        <i class="fas fa-envelope-open-text"></i>
+                        <p class="letter-click-text">Mektubu açmak için tıkla</p>
+                    </div>
+                    
+                    <div id="letter-modal" class="letter-modal">
+                        <div class="letter-content">
+                            <p id="letter-text"></p>
+                            <div class="letter-decoration">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                        </div>
+                        <button id="next-letter-btn" class="action-btn">Yeni Mektup Aç</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tıklama Yarışı Oyunu Sayfası -->
+        <div id="click-race-page" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <button class="back-btn">← Geri</button>
+                    <h2 class="page-title">Havin'in Tıklama Yarışı</h2>
+                </div>
+                
+                <div class="game-stats-card">
+                    <div class="stats-item">
+                        <p class="stats-label">Tıklama Sayısı</p>
+                        <div id="click-race-count">0</div>
+                    </div>
+                    <div class="stats-item">
+                        <p class="stats-label">Kalan Süre</p>
+                        <div id="click-race-time">10.0</div>
+                    </div>
+                    <div class="stats-item">
+                        <p class="stats-label">En İyi Skor</p>
+                        <div id="click-race-best-score">0</div>
+                    </div>
+                </div>
+                
+                <div id="click-race-container" class="click-race-container">
+                    <div id="click-race-status" class="game-status">
+                        Başlamak için butona tıkla!
+                    </div>
+                    
+                    <div id="click-race-target" class="click-race-target">
+                        <i class="fas fa-mouse-pointer"></i>
+                    </div>
+                </div>
+                
+                <button id="click-race-start" class="action-btn">Oyunu Başlat</button>
+            </div>
+        </div>
+        
+        <!-- Farkları Bul Oyunu Sayfası -->
+        <div id="find-diff-page" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <button class="back-btn">← Geri</button>
+                    <h2 class="page-title">Havin'in Farkları Bul Oyunu</h2>
+                </div>
+                
+                <div class="game-stats-card">
+                    <div class="stats-item">
+                        <p class="stats-label">Puan</p>
+                        <div id="find-diff-score">0</div>
+                    </div>
+                    <div class="stats-item">
+                        <p class="stats-label">Kalan Süre</p>
+                        <div id="find-diff-time">60s</div>
+                    </div>
+                    <div class="stats-item">
+                        <p class="stats-label">Seviye</p>
+                        <div id="find-diff-level">1</div>
+                    </div>
+                </div>
+                
+                <div id="find-diff-area" class="find-diff-area">
+                    <div id="find-diff-message" class="find-diff-message">
+                        Farklı olan karakteri bul ve üzerine tıkla!
+                    </div>
+                    <div id="find-diff-grid" class="find-diff-grid">
+                        <!-- Grid JavaScript ile oluşturulacak -->
+                    </div>
+                </div>
+                
+                <div id="find-diff-difficulty" class="difficulty-selector">
+                    <h3>Zorluk Seviyesi</h3>
+                    <div class="difficulty-options">
+                        <button data-difficulty="easy" class="difficulty-btn selected">Kolay</button>
+                        <button data-difficulty="medium" class="difficulty-btn">Orta</button>
+                        <button data-difficulty="hard" class="difficulty-btn">Zor</button>
+                    </div>
+                </div>
+                
+                <button id="find-diff-start" class="action-btn">Oyunu Başlat</button>
+            </div>
+        </div>
+        
+        <!-- Kelime Tahmin Oyunu Sayfası -->
+        <div id="hangman-page" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <button class="back-btn">← Geri</button>
+                    <h2 class="page-title">Havin'in Kelime Tahmin Oyunu</h2>
+                </div>
+                
+                <div class="game-stats-card">
+                    <div class="stats-item">
+                        <p class="stats-label">Kalan Hak</p>
+                        <div id="hangman-attempts">6</div>
+                    </div>
+                    <div class="stats-item">
+                        <p class="stats-label">Doğru Sayısı</p>
+                        <div id="hangman-correct">0</div>
+                    </div>
+                </div>
+                
+                <div class="hangman-container">
+                    <div id="hangman-drawing" class="hangman-drawing">
+                        <!-- Adam çizimi JavaScript ile oluşturulacak -->
+                    </div>
+                    
+                    <div id="hangman-word" class="hangman-word">
+                        <!-- Kelime JavaScript ile oluşturulacak -->
+                    </div>
+                    
+                    <div id="hangman-category" class="hangman-category">
+                        Kategori: <span id="current-category">Yükleniyor...</span>
+                    </div>
+                </div>
+                
+                <div id="hangman-keyboard" class="hangman-keyboard">
+                    <!-- Klavye JavaScript ile oluşturulacak -->
+                </div>
+                
+                <button id="hangman-start" class="action-btn">Yeni Oyun</button>
+            </div>
+        </div>
+        
+        <!-- Baloncuk Patlatma Oyunu Sayfası -->
+        <div id="bubble-page" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <button class="back-btn">← Geri</button>
+                    <h2 class="page-title">Havin'in Baloncuk Patlatma</h2>
+                </div>
+                
+                <div class="game-stats-card">
+                    <div class="stats-item">
+                        <p class="stats-label">Skor</p>
+                        <div id="bubble-score">0</div>
+                    </div>
+                    <div class="stats-item">
+                        <p class="stats-label">En İyi Skor</p>
+                        <div id="bubble-best-score">0</div>
+                    </div>
+                    <div class="stats-item">
+                        <p class="stats-label">Süre</p>
+                        <div id="bubble-time">60</div>
+                    </div>
+                </div>
+                
+                <div id="bubble-container" class="bubble-container">
+                    <!-- Baloncuklar JavaScript ile oluşturulacak -->
+                </div>
+                
+                <div id="bubble-controls" class="bubble-controls">
+                    <div class="difficulty-selector">
+                        <h3>Zorluk Seviyesi</h3>
+                        <div class="difficulty-options">
+                            <button data-difficulty="easy" class="difficulty-btn selected">Kolay</button>
+                            <button data-difficulty="medium" class="difficulty-btn">Orta</button>
+                            <button data-difficulty="hard" class="difficulty-btn">Zor</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="bubble-start" class="action-btn">Oyunu Başlat</button>
+            </div>
+        </div>
+        
+        <!-- Renk Eşleştirme Oyunu Sayfası -->
+        <div id="color-match-page" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <button class="back-btn">← Geri</button>
+                    <h2 class="page-title">Havin'in Renk Eşleştirme</h2>
+                </div>
+                
+                <div class="game-stats-card">
+                    <div class="stats-item">
+                        <p class="stats-label">Skor</p>
+                        <div id="color-match-score">0</div>
+                    </div>
+                    <div class="stats-item">
+                        <p class="stats-label">En İyi Skor</p>
+                        <div id="color-match-best-score">0</div>
+                    </div>
+                    <div class="stats-item">
+                        <p class="stats-label">Seviye</p>
+                        <div id="color-match-level">1</div>
+                    </div>
+                </div>
+                
+                <div id="color-match-target" class="color-match-target">
+                    <!-- Hedef renk JavaScript ile oluşturulacak -->
+                </div>
+                
+                <div id="color-match-grid" class="color-match-grid">
+                    <!-- Renk karteleri JavaScript ile oluşturulacak -->
+                </div>
+                
+                <div id="color-match-controls" class="color-match-controls">
+                    <div class="time-bar-container">
+                        <div id="color-match-time-bar" class="time-bar"></div>
+                    </div>
+                </div>
+                
+                <button id="color-match-start" class="action-btn">Oyunu Başlat</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Aşk Mesajı Modal -->
+    <div id="love-message-modal" class="modal">
+        <div class="modal-content animate__animated animate__zoomIn">
+            <div class="modal-header">
+                <h3><i class="fas fa-heart"></i> Aşk Mesajı <i class="fas fa-heart"></i></h3>
+                <span class="modal-close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p id="love-message-text"></p>
+                <div class="modal-decoration">
+                    <i class="fas fa-heart animate__animated animate__pulse animate__infinite"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Background Effects -->
+    <div class="bg-decoration"></div>
+    <div id="particles" class="particles"></div>
+    
+
+    
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/game-state.js"></script>
+    <script src="js/xox-game.js"></script>
+    <script src="js/memory-game.js"></script>
+    <script src="js/reaction-game.js"></script>
+    <script src="js/2048-game.js"></script>
+    <script src="js/tetris-game.js"></script>
+    <script src="js/snake-game.js"></script>
+    <!-- Yeni oyun scriptleri -->
+    <script src="js/hangman-game.js"></script>
+    <script src="js/bubble-game.js"></script>
+    <script src="js/color-match-game.js"></script>
+    <script src="js/click-race-game.js"></script>
+    <script src="js/love-letters-game.js"></script>
+    <script src="js/find-diff-game.js"></script>
+    <script src="js/love-meter-game.js"></script>
+    <script src="js/bulb-breaker-game.js"></script>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
